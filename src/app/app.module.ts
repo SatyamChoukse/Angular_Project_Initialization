@@ -7,6 +7,7 @@ import { RegisterComponent } from './public/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './public/header/header.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
