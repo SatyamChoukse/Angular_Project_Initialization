@@ -1,1 +1,144 @@
-<p>register works!</p>
+<div class="box">
+    <!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+    <div class="user my-4">
+        <h1>Sign-Up</h1>
+    </div>
+    <!-- <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Added Successfully!</strong>
+        <button (click)="removeMsg()" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div> -->
+    <div class="m-auto w-50" *ngIf="userForm!=null">
+        <form [formGroup]="userForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3 ">
+                        <label for="name" class="w-50">Name :</label>
+                        <div>
+                        <input type="text" class="form-control" placeholder="Enter name" name="name" formControlName="name">
+                        <small class="text-danger"
+                            *ngIf="this.userForm.controls.name.hasError('required') && this.userForm.controls.name.touched">
+                            This field is required.*
+                        </small>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3 ">
+                        <label for="name" class="w-50">Email :</label>
+                        <input type="email" class="form-control" placeholder="Enter email" name="email" formControlName="email">
+                        <div
+                            *ngIf="this.userForm.controls.email && this.userForm.controls.email.invalid && this.userForm.controls.email.touched">
+                            <small class="text-danger" *ngIf="this.userForm.controls.email.hasError('required')">
+                                This field is required.*
+                            </small>
+                            <small class="text-danger" *ngIf="this.userForm.controls.email.hasError('email')">
+                                Enter in email format.*
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="password" class="w-50">Password :</label>
+                        <input type="password" class="form-control" placeholder="Enter password" name="password"
+                            formControlName="password">
+                        <div
+                            *ngIf="this.userForm.controls.password && this.userForm.controls.password.invalid && this.userForm.controls.password.touched">
+        
+                            <small class="text-danger" *ngIf="this.userForm.controls.password.hasError('required')">
+                                This field is required.*
+                            </small>
+        
+                            <small class="text-danger" *ngIf="this.userForm.controls.password.hasError('pattern')">
+                                Password must contain: a-z, A-Z, 0-9, Special char *
+                            </small>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="address" class="w-50">Address :</label>
+                        <input type="address" class="form-control" placeholder="Enter address" name="address"
+                            formControlName="address">
+                        <div
+                            *ngIf="this.userForm.controls.address && this.userForm.controls.address.invalid && this.userForm.controls.address.touched">
+                            <small class="text-danger" *ngIf="this.userForm.controls.address.hasError('required')">
+                                This field is required.*
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="city" class="w-50">City :</label>
+                        <input type="city" class="form-control" placeholder="Enter city" name="city" formControlName="city">
+                        <div
+                            *ngIf="this.userForm.controls.city && this.userForm.controls.city.invalid && this.userForm.controls.city.touched">
+                            <small class="text-danger" *ngIf="this.userForm.controls.city.hasError('required')">
+                                This field is required.*
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="country" class="w-50">Country :</label>
+                        <input type="country" class="form-control" placeholder="Enter country" name="country"
+                            formControlName="country">
+                        <div
+                            *ngIf="this.userForm.controls.country && this.userForm.controls.country.invalid && this.userForm.controls.country.touched">
+                            <small class="text-danger" *ngIf="this.userForm.controls.country.hasError('required')">
+                                This field is required.*
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="phone" class="w-50">Phone :</label>
+                        <input type="phone" class="form-control" placeholder="Enter phone number" name="phone"
+                            formControlName="phone">
+                        <div
+                            *ngIf="this.userForm.controls.phone && this.userForm.controls.phone.invalid && this.userForm.controls.phone.touched">
+                            <small class="text-danger" *ngIf="this.userForm.controls.phone.hasError('required')">
+                                This field is required.*
+                            </small>
+                            <small class="text-danger" *ngIf="this.userForm.controls.phone.hasError('minlength')">
+                                Enter Correct Phone Number.*
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="DeptID" class="w-50 mb-2">Dept ID :</label>
+                        <select name="DeptID" formControlName="departmentID" class="w-100">
+                            <option [ngValue]="opt.id" *ngFor="let opt of updatedept">{{opt.departmentName}}</option>
+                        </select>
+                    </div>
+                </div> -->
+            </div>
+
+
+            <!-- (click)="SaveUser(userForm)" -->
+            <button type="submit" class="btn btn-primary" (click)="SaveUser()" [disabled]="userForm.invalid">Submit</button>
+
+            <div class="mt-4">
+                Already have an account? <a  routerLink="../login" class="">Sign in</a>
+            </div>
+        </form>
+
+    </div>
+</div>
