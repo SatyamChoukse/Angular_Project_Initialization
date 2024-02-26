@@ -12,7 +12,7 @@ export class LoginComponent {
   public isShowSbnt: boolean = false;
   public loginFormGroup: FormGroup<loginModel> = new FormGroup<loginModel>({
     email: new FormControl(null, [Validators.required, Validators.pattern(/[a-zA-Z0-9_\-\.]+@[a-z]+\.[c][o][m]/)]),
-    password: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
 
   constructor(private auth: AuthService){}
