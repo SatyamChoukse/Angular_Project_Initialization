@@ -24,8 +24,7 @@ export class RegisterComponent {
       address: new FormControl(null, [Validators.required]),
       city: new FormControl(null, [Validators.required]),
       country: new FormControl(null, [Validators.required]),
-      phone: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      departmentID: new FormControl(null, [Validators.required])
+      phone: new FormControl(null, [Validators.required, Validators.minLength(10)])
     })
   }
   ngOnInit(): void {

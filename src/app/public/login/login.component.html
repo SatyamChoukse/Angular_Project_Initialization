@@ -1,50 +1,51 @@
-<div class="container">
-  <div class="user text-center">
-      <h3>Login</h3>
-  </div>
-
-  <div *ngIf="loginFormGroup!=null" class="m-auto w-25">
-      <form [formGroup]="loginFormGroup">
-          <div class="mb-3">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" placeholder="Enter email" name="email" formControlName="email">
-              <div
-                  *ngIf="this.loginFormGroup.controls.email && this.loginFormGroup.controls.email.invalid && this.loginFormGroup.controls.email.touched">
-                  <small class="text-danger" *ngIf="this.loginFormGroup.controls.email.hasError('required')">
-                      This field is required.*
-                  </small>
-                  <small class="text-danger" *ngIf="this.loginFormGroup.controls.email.hasError('pattern')">
-                      Enter in email format.*
-                  </small>
-              </div>
-          </div>
-          <div class="mb-3">
-              <label for="password" class="form-label mb-0">Password</label>
-              <input type="password" class="form-control " placeholder="Password" name="password"
-                  formControlName="password">
-              <div
-                  *ngIf="this.loginFormGroup.controls.password && this.loginFormGroup.controls.password.invalid && this.loginFormGroup.controls.password.touched">
-
-                  <small class="text-danger" *ngIf="this.loginFormGroup.controls.password.hasError('required')">
-                      This field is required.*
-                  </small>
-
-                  <small class="text-danger" *ngIf="this.loginFormGroup.controls.password.hasError('minlength')">
-                      The minimum length for password is 6 characters.
-                  </small>
-
-              </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary"
-              [disabled]="loginFormGroup.invalid">Submit</button>
-      </form>
-
-      <a class="ms-5">Forgot passward?</a>
-
-      <div class="m-3">
-          Don't have an account? <a routerLink="../signup" class="">Sign up</a>
-      </div>
-  </div>
+<div class="box">
+    <div class="loginbox">
+        <div class="user">
+            <h3>Login</h3>
+        </div>
+        <div *ngIf="loginFormGroup!=null" class="m-auto w-50">
+            <form [formGroup]="loginFormGroup">
+                <div class="mb-3">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter email" name="email" formControlName="email">
+                    <div
+                        *ngIf="this.loginFormGroup.controls.email && this.loginFormGroup.controls.email.invalid && this.loginFormGroup.controls.email.touched">
+                        <small class="text-danger" *ngIf="this.loginFormGroup.controls.email.hasError('required')">
+                            This field is required.*
+                        </small>
+                        <small class="text-danger" *ngIf="this.loginFormGroup.controls.email.hasError('pattern')">
+                            Enter in email format.*
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label mb-0">Password</label>
+                    <input type="password" class="form-control " placeholder="Password" name="password"
+                        formControlName="password">
+                    <div
+                        *ngIf="this.loginFormGroup.controls.password && this.loginFormGroup.controls.password.invalid && this.loginFormGroup.controls.password.touched">
+    
+                        <small class="text-danger" *ngIf="this.loginFormGroup.controls.password.hasError('required')">
+                            This field is required.*
+                        </small>
+    
+                        <small class="text-danger" *ngIf="this.loginFormGroup.controls.password.hasError('minlength')">
+                            The minimum length for password is 6 characters.
+                        </small>
+    
+                    </div>
+                </div>
+    
+            </form>
+            
+            <div class="submit-part">
+            <button type="submit" class="btn btn-primary" [disabled]="loginFormGroup.invalid">Submit</button>
+            <a class="">Forgot passward?</a>
+    
+            <div class="">
+                Don't have an account? <a routerLink="../register" class="">Sign up</a>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
-

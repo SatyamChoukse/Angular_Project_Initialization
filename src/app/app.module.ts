@@ -8,10 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './public/header/header.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { HomeComponent } from './public/home/home.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}
 ]
@@ -22,7 +24,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
