@@ -6,7 +6,7 @@
         <div *ngIf="loginFormGroup!=null" class="m-auto w-50">
             <form [formGroup]="loginFormGroup">
                 <div class="mb-3">
-                    <label for="email">Email address</label>
+                    <label>Email address</label>
                     <input type="email" class="form-control" placeholder="Enter email" name="email" formControlName="email">
                     <div
                         *ngIf="this.loginFormGroup.controls.email && this.loginFormGroup.controls.email.invalid && this.loginFormGroup.controls.email.touched">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label mb-0">Password</label>
+                    <label class="form-label mb-0">Password</label>
                     <input type="password" class="form-control " placeholder="Password" name="password"
                         formControlName="password">
                     <div
@@ -39,7 +39,7 @@
             </form>
             
             <div class="submit-part">
-            <button type="submit" class="btn btn-primary" [disabled]="loginFormGroup.invalid">Submit</button>
+            <button (click)="login()" type="submit" class="btn btn-primary" [disabled]="loginFormGroup.invalid">Submit</button>
             <a class="">Forgot passward?</a>
     
             <div class="">

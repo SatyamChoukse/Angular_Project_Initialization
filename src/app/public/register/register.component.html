@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3 ">
-                            <label for="name" class="w-50">Name :</label>
+                            <label class="w-50">Name :</label>
                             <div>
                                 <input type="text" class="form-control" placeholder="Enter name" name="name"
                                     formControlName="name">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3 ">
-                            <label for="name" class="w-50">Email :</label>
+                            <label class="w-50">Email :</label>
                             <input type="email" class="form-control" placeholder="Enter email" name="email"
                                 formControlName="email">
                             <div
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="password" class="w-50">Password :</label>
+                            <label class="w-50">Password :</label>
                             <input type="password" class="form-control" placeholder="Enter password" name="password"
                                 formControlName="password">
                             <div
@@ -60,23 +60,32 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="address" class="w-50">Address :</label>
-                            <input type="address" class="form-control" placeholder="Enter address" name="address"
-                                formControlName="address">
+                            <label class="w-50">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Enter password" name="password"
+                                formControlName="confirmPassword">
                             <div
-                                *ngIf="this.userForm.controls.address && this.userForm.controls.address.invalid && this.userForm.controls.address.touched">
-                                <small class="text-danger" *ngIf="this.userForm.controls.address.hasError('required')">
+                                *ngIf="(userForm.controls.confirmPassword.dirty || userForm.controls.confirmPassword.touched)">
+    
+                                <small class="text-danger" *ngIf="this.userForm.controls.confirmPassword.errors?.['required']; else pMisMatch">
                                     This field is required.*
                                 </small>
+    
+                                <ng-template #pMisMatch>
+                                    <small class="text-danger" *ngIf="userForm.errors?.['passwordMismatchError']">
+                                        *Password Doesn't matches
+                                    </small>
+                                </ng-template>
+    
                             </div>
                         </div>
                     </div>
+
                 </div>
     
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="city" class="w-50">City :</label>
+                            <label class="w-50">City :</label>
                             <input type="city" class="form-control" placeholder="Enter city" name="city"
                                 formControlName="city">
                             <div
@@ -89,7 +98,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="country" class="w-50">Country :</label>
+                            <label class="w-50">Country :</label>
                             <input type="country" class="form-control" placeholder="Enter country" name="country"
                                 formControlName="country">
                             <div
@@ -105,16 +114,29 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label for="phone" class="w-50">Phone :</label>
-                            <input type="phone" class="form-control" placeholder="Enter phone number" name="phone"
+                            <label  class="w-50">Phone :</label>
+                            <input type="number" class="form-control" placeholder="Enter phone number" name="phone"
                                 formControlName="phone">
                             <div
                                 *ngIf="this.userForm.controls.phone && this.userForm.controls.phone.invalid && this.userForm.controls.phone.touched">
                                 <small class="text-danger" *ngIf="this.userForm.controls.phone.hasError('required')">
                                     This field is required.*
                                 </small>
-                                <small class="text-danger" *ngIf="this.userForm.controls.phone.hasError('minlength')">
-                                    Enter Correct Phone Number.*
+                                <small class="text-danger" *ngIf="this.userForm.controls.phone.hasError('pattern')">
+                                    Enter 10 digit Phone Number.*
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label class="w-50">Address :</label>
+                            <input type="address" class="form-control" placeholder="Enter address" name="address"
+                                formControlName="address">
+                            <div
+                                *ngIf="this.userForm.controls.address && this.userForm.controls.address.invalid && this.userForm.controls.address.touched">
+                                <small class="text-danger" *ngIf="this.userForm.controls.address.hasError('required')">
+                                    This field is required.*
                                 </small>
                             </div>
                         </div>
@@ -122,11 +144,15 @@
                 </div>
     
                 <div class="submit-part">
-                    <button type="submit" class="btn btn-primary" (click)="SaveUser()"
+                    <button *ngIf="!isShowSBtn" type="submit" class="btn btn-primary" (click)="submit()"
                         [disabled]="userForm.invalid">Submit</button>
+
+                    <button *ngIf="isShowSBtn" class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
     
                     <div class="">
-                        Already have an account? <a routerLink="../login" class="">Sign in</a>
+                        Already have an account? <a routerLink="/login" class="">Sign in</a>
                     </div>
                 </div>
             </form>

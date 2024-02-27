@@ -5,3 +5,9 @@ export interface responseG<T>{
   message: string,
   token: string
 }
+
+export interface response{
+  status: string,
+  message: string,
+  statusCode: number,
+}
