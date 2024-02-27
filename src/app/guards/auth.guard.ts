@@ -4,9 +4,12 @@ import { inject } from '@angular/core';
 
 export const authGuard: CanActivateFn = (route, state) => {
   
-  if(!localStorage.getItem(environment.tokenName)){
+  if(!localStorage.getItem(environment.tokenKey)){
     return inject(Router).navigate(['/login']);
   }
 
   return true;
 };
+
+
+//TODO: add role based guards Admin guard in a separate file

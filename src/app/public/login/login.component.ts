@@ -35,7 +35,7 @@ export class LoginComponent {
       this.authService.login(loginUser).subscribe({
         next: (res: responseG<user>) =>{       
           if(res.statusCode == 200){
-            localStorage.setItem(environment.tokenName, JSON.stringify(res.token));
+            localStorage.setItem(environment.tokenKey, JSON.stringify(res.token));
             this.toastreService.success("Logged In success");
             this.authService.isLoggedInE.emit(true);
             this.isShowSbnt = false;    

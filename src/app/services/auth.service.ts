@@ -12,13 +12,15 @@ import { registerFormData } from '../models/register.model';
 })
 export class AuthService {
   
-  private baseUrl = environment.url;
+  private baseUrl = environment.baseUrl;
+  //TODO: rename OnLoginChange
   public isLoggedInE:EventEmitter<boolean>=new EventEmitter<boolean>();
 
   constructor(private httpClient: HttpClient) { }
   
+  //TODO: isLoggedIn
   public isLoggedInF(){
-    if(localStorage.getItem(environment.tokenName)){
+    if(localStorage.getItem(environment.tokenKey)){
       return true;
     }
     return false;
