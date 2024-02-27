@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/app/environments/environment';
 import { loginForm, login } from 'src/app/models/login.model';
 import { user } from 'src/app/models/user.model';
-import { responseG } from 'src/app/responses/response';
+import { Identity } from 'src/app/responses/response';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -33,12 +33,12 @@ export class LoginComponent {
       }
 
       this.authService.login(loginUser).subscribe({
-        next: (res: responseG<user>) => {
+        next: (res: Identity<user>) => {
           if (res.statusCode == 200) {
             localStorage.setItem(environment.tokenKey, JSON.stringify(res.token));
             localStorage.setItem(environment.empRoleTypeKey, JSON.stringify(res.data.employeeType));
             this.toastreService.success("Logged In success");
-            this.authService.isLoggedInE.emit(true);
+            this.authService.OnLoginChange.emit(true);
             this.isShowSbnt = false;
             this.router.navigate(['/home']);
           }

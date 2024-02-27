@@ -1,4 +1,5 @@
-import {  Component, OnDestroy, OnInit } from '@angular/core';
+import {  Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -10,11 +11,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean = false;
   //TODO: rename to subscription or subscriptions if array
   public loggedInSubscription!: Subscription;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedInF();
-    this.loggedInSubscription = this.authService.isLoggedInE.subscribe(
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.loggedInSubscription = this.authService.OnLoginChange.subscribe(
       (res: boolean) => {
         this.isLoggedIn = res;
       }
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logout() {
     localStorage.clear();
     this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 
   ngOnDestroy(): void {

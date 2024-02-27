@@ -4,15 +4,14 @@
             <h2>Sign-Up</h2>
             <p>Fill out the form carefully for registration</p>
         </div>
-        <div class="m-auto w-75" *ngIf="userForm!=null">
+        <div class="m-auto w-100" *ngIf="userForm!=null">
             <form [formGroup]="userForm">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3 ">
-                            <label class="w-50">Name :</label>
+                            <label class="w-50">Name*</label>
                             <div>
-                                <input type="text" class="form-control" placeholder="Enter name" name="name"
-                                    formControlName="name">
+                                <input type="text" class="form-control" formControlName="name">
                                 <small class="text-danger"
                                     *ngIf="this.userForm.controls.name.hasError('required') && this.userForm.controls.name.touched">
                                     This field is required.*
@@ -22,8 +21,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3 ">
-                            <label class="w-50">Email :</label>
-                            <input type="email" class="form-control" placeholder="Enter email" name="email"
+                            <label class="w-50">Email*</label>
+                            <input type="email" class="form-control" name="email"
                                 formControlName="email">
                             <div
                                 *ngIf="this.userForm.controls.email && this.userForm.controls.email.invalid && this.userForm.controls.email.touched">
@@ -41,8 +40,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label class="w-50">Password :</label>
-                            <input type="password" class="form-control" placeholder="Enter password" name="password"
+                            <label class="w-50">Password*</label>
+                            <input type="password" class="form-control" name="password"
                                 formControlName="password">
                             <div
                                 *ngIf="this.userForm.controls.password && this.userForm.controls.password.invalid && this.userForm.controls.password.touched">
@@ -60,8 +59,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label class="w-50">Confirm Password</label>
-                            <input type="password" class="form-control" placeholder="Enter password" name="password"
+                            <label class="w-50">Confirm Password*</label>
+                            <input type="password" class="form-control" name="password"
                                 formControlName="confirmPassword">
                             <div
                                 *ngIf="(userForm.controls.confirmPassword.dirty || userForm.controls.confirmPassword.touched)">
@@ -85,8 +84,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label class="w-50">City :</label>
-                            <input type="city" class="form-control" placeholder="Enter city" name="city"
+                            <label class="w-50">City*</label>
+                            <input type="city" class="form-control" name="city"
                                 formControlName="city">
                             <div
                                 *ngIf="this.userForm.controls.city && this.userForm.controls.city.invalid && this.userForm.controls.city.touched">
@@ -98,8 +97,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label class="w-50">Country :</label>
-                            <input type="country" class="form-control" placeholder="Enter country" name="country"
+                            <label class="w-50">Country*</label>
+                            <input type="country" class="form-control" name="country"
                                 formControlName="country">
                             <div
                                 *ngIf="this.userForm.controls.country && this.userForm.controls.country.invalid && this.userForm.controls.country.touched">
@@ -114,8 +113,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label  class="w-50">Phone :</label>
-                            <input type="number" class="form-control" placeholder="Enter phone number" name="phone"
+                            <label  class="w-50">Phone*</label>
+                            <input type="number" class="form-control" name="phone"
                                 formControlName="phone">
                             <div
                                 *ngIf="this.userForm.controls.phone && this.userForm.controls.phone.invalid && this.userForm.controls.phone.touched">
@@ -130,8 +129,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mb-3">
-                            <label class="w-50">Address :</label>
-                            <input type="address" class="form-control" placeholder="Enter address" name="address"
+                            <label class="w-50">Address*</label>
+                            <input type="address" class="form-control" name="address"
                                 formControlName="address">
                             <div
                                 *ngIf="this.userForm.controls.address && this.userForm.controls.address.invalid && this.userForm.controls.address.touched">
