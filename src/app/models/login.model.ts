@@ -1,11 +1,10 @@
 import { FormControl } from "@angular/forms";
-//TODO: any interface which represents a form, should suffix with form, LoginModel > LoginForm
-export interface loginModel{
+export interface loginForm{
   email: FormControl<string | null>;
   password: FormControl<string | null>;
 }
 
-export interface logindata{
+export interface login{
   email: string | null;
   password: string | null;
 }

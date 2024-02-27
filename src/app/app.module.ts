@@ -10,8 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './public/header/header.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { HomeComponent } from './public/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { errorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 
 
 const routes: Routes = [
@@ -28,7 +31,8 @@ const routes: Routes = [
     RegisterComponent,
     HeaderComponent,
     LoaderComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,10 @@ const routes: Routes = [
       timeOut: 1000
     })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: errorHandlingInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

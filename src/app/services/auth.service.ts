@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { logindata } from '../models/login.model';
+import { login } from '../models/login.model';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { response, responseG } from '../responses/response';
@@ -26,7 +26,7 @@ export class AuthService {
     return false;
   }
 
-  public login(userData: logindata): Observable<responseG<user>>{
+  public login(userData: login): Observable<responseG<user>>{
     const url = `${this.baseUrl}/user/login`;
     return this.httpClient.post<responseG<user>>(url, userData);
   }
