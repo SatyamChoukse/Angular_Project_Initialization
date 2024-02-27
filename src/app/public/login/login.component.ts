@@ -36,6 +36,7 @@ export class LoginComponent {
         next: (res: responseG<user>) => {
           if (res.statusCode == 200) {
             localStorage.setItem(environment.tokenKey, JSON.stringify(res.token));
+            localStorage.setItem(environment.empRoleTypeKey, JSON.stringify(res.data.employeeType));
             this.toastreService.success("Logged In success");
             this.authService.isLoggedInE.emit(true);
             this.isShowSbnt = false;
@@ -44,8 +45,6 @@ export class LoginComponent {
         },
         error: (err) => {
           this.isShowSbnt = false;
-          console.log(err);
-          this.toastreService.error(err.message);
         }
       })
     }
