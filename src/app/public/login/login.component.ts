@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { loginModel } from 'src/app/models/login.model';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/app/environments/environment';
+import { loginModel, logindata } from 'src/app/models/login.model';
+import { user } from 'src/app/models/user.model';
+import { responseG } from 'src/app/responses/response';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,45 +19,33 @@ export class LoginComponent {
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
 
-  constructor(private auth: AuthService){}
+  constructor(private authService: AuthService, private toastreService: ToastrService){}
 
-  // public login(){
-  //   this.loginFormGroup.markAllAsTouched();
-  //   if(this.loginFormGroup.valid){
-  //     const loginUser: logindata = {
-  //       email: this.loginFormGroup.controls.email.value,
-  //       password: this.loginFormGroup.controls.password.value
-  //     }
+  public login(){
+    console.log(true);
+    this.loginFormGroup.markAllAsTouched();
+    if(this.loginFormGroup.valid){
+        this.isShowSbnt = true;
+      const loginUser: logindata = {
+        email: this.loginFormGroup.controls.email.value,
+        password: this.loginFormGroup.controls.password.value
+      }
       
-  //     this.isShowSbnt = true;
-  //     this.auth.login(loginUser).subscribe({
-  //       next: (res: response<loggedInUser>) =>{         
-  //         if(res.status){    
-  //           this.auth.loggedInUserId = res.data.user.id;
-  //           console.log(res.data.user.id);
-
-  //           localStorage.setItem(environment.tokenName, res.data.access_token);
-
-  //           let userData= {
-  //             name: res.data.user.name,
-  //             role: res.data.user.role,
-  //             // id: res.data.user.id
-  //           }
-
-            
-  //           localStorage.setItem("userData", JSON.stringify(userData));
-
-  //           this.router.navigate(['/portal']);
-  //           this.toastreService.success("Logged in success");
-  //           this.isShowSbnt = false;
-  //         }
-  //       },
-  //       error: (err) =>{
-  //         this.isShowSbnt = false;
-  //         console.log(err);
-  //         this.toastreService.error(err.message);
-  //       }
-  //     })
-  //   }
-  // }
+      this.authService.login(loginUser).subscribe({
+        next: (res: responseG<user>) =>{ 
+          console.log(res);        
+          if(res.statusCode == 200){
+            localStorage.setItem(environment.tokenName, JSON.stringify(res.token));
+            this.toastreService.success("Logged In success");
+            this.isShowSbnt = false;    
+          }
+        },
+        error: (err) =>{
+          this.isShowSbnt = false;
+          console.log(err);
+          this.toastreService.error(err.message);
+        }
+      })
+    }
+  }
 }
