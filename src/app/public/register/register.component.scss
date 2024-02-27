@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 92vh;
+    min-height: calc(100vh - 56px);
     background: linear-gradient( #0694c6,#baffff );
     
     .registerbox{
         padding: 20px;
         background-color: #fff;
         width: 750px;
-        height: 500px;
+        min-height: 500px;
         border-radius: 10px;
 
         .user {

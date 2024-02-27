@@ -17,20 +17,21 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <div class="dropdown">
+          <div class="dropdown" *ngIf="token">
             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle profile"></i>
             </button>
-            <ul class="dropdown-menu p-2">
+            <ul  class="dropdown-menu p-2 dropdwn">
               <div class="text-center r-1"><img src="https://img.icons8.com/color/40/000000/guest-female.png"
                 width="30" class="img1" /></div>
               <li routerLink="portal/profile"><button class="dropdown-item mt-2" type="button">Manage your Profile</button></li>
+              <li><button class="dropdown-item mt-2" type="button" (click)="logout()">Logout</button></li>
             </ul>
           </div>
-          <li class="nav-item">
+          <li *ngIf="!token" class="nav-item">
             <a class="nav-link" routerLink="login">Login</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!token" class="nav-item">
             <a class="nav-link" routerLink="register">SignUp</a>
           </li>
         </ul>

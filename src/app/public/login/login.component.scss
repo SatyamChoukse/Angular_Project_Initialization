@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 92vh;
+  min-height: calc(100vh - 56px);
   background: linear-gradient( #0694c6,#baffff );
   
   .loginbox{
       padding: 20px;
       background-color: #fff;
       width: 600px;
-      height: 375px;
+      min-height: 375px;
       border-radius: 10px;
 
       .user {
