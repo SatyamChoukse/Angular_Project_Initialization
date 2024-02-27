@@ -1,5 +1,5 @@
 //TODO: chnage the name to Identity
-export interface responseG<T>{
+export interface Identity<T>{
   data: T
   status: string,
   statusCode: number,

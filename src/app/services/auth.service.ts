@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { login } from '../models/login.model';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
-import { response, responseG } from '../responses/response';
+import { response, Identity } from '../responses/response';
 import { user } from '../models/user.model';
 import { registerFormData } from '../models/register.model';
 
@@ -13,22 +13,21 @@ import { registerFormData } from '../models/register.model';
 export class AuthService {
   
   private baseUrl = environment.baseUrl;
-  //TODO: rename OnLoginChange
-  public isLoggedInE:EventEmitter<boolean>=new EventEmitter<boolean>();
+
+  public OnLoginChange:EventEmitter<boolean>=new EventEmitter<boolean>();
 
   constructor(private httpClient: HttpClient) { }
   
-  //TODO: isLoggedIn
-  public isLoggedInF(){
+  public isLoggedIn(){
     if(localStorage.getItem(environment.tokenKey)){
       return true;
     }
     return false;
   }
 
-  public login(userData: login): Observable<responseG<user>>{
+  public login(userData: login): Observable<Identity<user>>{
     const url = `${this.baseUrl}/user/login`;
-    return this.httpClient.post<responseG<user>>(url, userData);
+    return this.httpClient.post<Identity<user>>(url, userData);
   }
 
   public register(userData: registerFormData): Observable<response>{
