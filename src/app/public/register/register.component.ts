@@ -55,7 +55,6 @@ export class RegisterComponent {
           }
         },
         error: (err) => {    
-          console.log(err);
           this.isShowSBtn = false;      
           this.toastreService.error(err.message);
         }  

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/app/environments/environment';
 import { loginModel, logindata } from 'src/app/models/login.model';
@@ -19,7 +20,7 @@ export class LoginComponent {
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
 
-  constructor(private authService: AuthService, private toastreService: ToastrService){}
+  constructor(private authService: AuthService, private toastreService: ToastrService, private router: Router){}
 
   public login(){
     console.log(true);
@@ -38,6 +39,7 @@ export class LoginComponent {
             localStorage.setItem(environment.tokenName, JSON.stringify(res.token));
             this.toastreService.success("Logged In success");
             this.isShowSbnt = false;    
+            this.router.navigate(['/home']);
           }
         },
         error: (err) =>{
