@@ -33,8 +33,7 @@ export class LoginComponent {
       }
       
       this.authService.login(loginUser).subscribe({
-        next: (res: responseG<user>) =>{ 
-          console.log(res);        
+        next: (res: responseG<user>) =>{       
           if(res.statusCode == 200){
             localStorage.setItem(environment.tokenName, JSON.stringify(res.token));
             this.toastreService.success("Logged In success");
