@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { logindata } from '../models/login.model';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
@@ -13,9 +13,16 @@ import { registerFormData } from '../models/register.model';
 export class AuthService {
   
   private baseUrl = environment.url;
+  public isLoggedInE:EventEmitter<boolean>=new EventEmitter<boolean>();
 
   constructor(private httpClient: HttpClient) { }
   
+  public isLoggedInF(){
+    if(localStorage.getItem(environment.tokenName)){
+      return true;
+    }
+    return false;
+  }
 
   public login(userData: logindata): Observable<responseG<user>>{
     const url = `${this.baseUrl}/user/login`;

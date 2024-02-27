@@ -1,28 +1,31 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {  Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit,OnChanges{
-  
-  public token:boolean=false;
-  
-  ngOnChanges(): void {
-    if(localStorage.getItem('jwtToken')){
-      this.token=!this.token;
-    }
-  }
+export class HeaderComponent implements OnInit, OnDestroy {
+  public isLoggedIn: boolean = false;
+  public loggedInSubscription!: Subscription;
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('jwtToken')){
-      this.token=!this.token;
-    }
+    this.isLoggedIn = this.authService.isLoggedInF();
+    this.loggedInSubscription = this.authService.isLoggedInE.subscribe(
+      (res: boolean) => {
+        this.isLoggedIn = res;
+      }
+    )
   }
 
-  public logout(){
+  public logout() {
     localStorage.clear();
-    this.token=!this.token;
+    this.isLoggedIn = false;
   }
-  
+
+  ngOnDestroy(): void {
+    this.loggedInSubscription.unsubscribe();
+  }
 }
