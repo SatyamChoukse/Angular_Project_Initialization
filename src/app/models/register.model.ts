@@ -9,5 +9,4 @@ export interface registerModel{
     city:FormControl<string | null>;
     country:FormControl<string | null>;
     phone:FormControl<string | null>;
-    departmentID:FormControl<number | null>;
 }

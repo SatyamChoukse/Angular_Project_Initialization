@@ -1,56 +1,41 @@
 .box {
-    // // width: 100vh;
-    // height: 100vh;
-    // display: flex;
-    // flex-direction: column;
-    // // justify-content: center;
-    // align-items: center;
-    // padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+    background: linear-gradient( #0694c6,#baffff );
+    
+    .registerbox{
+        padding: 20px;
+        background-color: #fff;
+        width: 750px;
+        height: 500px;
+        border-radius: 10px;
 
-    .user {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        a, h1 {
-            margin: 0 10px;
+        .user {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    
+            a, h1 {
+                margin: 0 10px;
+            }
         }
     }
+    
 }
-
-.container {
-    // width: 500px;
-    // height: 500px;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    // background-color: rgb(181, 224, 253);
-    // border-radius: 15px;
-    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-    // h1 {
-    //     padding-bottom: 30px;
-    // }
-
-    // form {
-    //     input {
-    //         border: 1px solid black;
-    //         padding: 5px;
-    //         border-radius: 4px;
-    //     }
-    // }
-
-    // button {
-    //     padding: 4px;
-    //     // background: linear-gradient(to top, #783e9f, #03a9f4);
-    // }
-}
-
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
 
 .text-danger {
     color: red;
+}
+
+.submit-part{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
