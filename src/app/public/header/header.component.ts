@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean = false;
+  //TODO: rename to subscription or subscriptions if array
   public loggedInSubscription!: Subscription;
   constructor(private authService: AuthService) { }
 
