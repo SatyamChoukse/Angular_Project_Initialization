@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './public/header/header.component';
 import { LoaderComponent } from './shared/loader/loader.component';
-import { HomeComponent } from './public/home/home.component';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -19,9 +18,10 @@ import { errorHandlingInterceptor } from './interceptors/error-handling.intercep
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  
+  { path: 'home', loadChildren: () => import('./public/home/home.module').then(m => m.HomeModule) }
 ]
 
 @NgModule({
@@ -31,7 +31,6 @@ const routes: Routes = [
     RegisterComponent,
     HeaderComponent,
     LoaderComponent,
-    HomeComponent,
     DashboardComponent
   ],
   imports: [
