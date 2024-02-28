@@ -1,3 +1,5 @@
+import { RoleType } from "../enums/roleType.enum";
+
 export interface user{
   address: string,
   city: string,
@@ -5,7 +7,7 @@ export interface user{
   departmentID: number,
   departmentName: string | null,
   email: string,
-  employeeType: number,
+  employeeType: RoleType,
   id: number,
   name: string,
   phone: string

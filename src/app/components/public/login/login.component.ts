@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public isShowSbnt: boolean = false;
+  public isSubmitting: boolean = false;
   public loginFormGroup: FormGroup<loginForm> = new FormGroup<loginForm>({
     email: new FormControl(null, [Validators.required, Validators.pattern(/[a-zA-Z0-9_\-\.]+@[a-z]+\.[c][o][m]/)]),
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
@@ -26,7 +26,7 @@ export class LoginComponent {
 
     this.loginFormGroup.markAllAsTouched();
     if (this.loginFormGroup.valid) {
-      this.isShowSbnt = true;
+      this.isSubmitting = true;
       const loginUser: login = {
         email: this.loginFormGroup.controls.email.value,
         password: this.loginFormGroup.controls.password.value
@@ -38,13 +38,13 @@ export class LoginComponent {
             localStorage.setItem(environment.tokenKey, JSON.stringify(res.token));
             localStorage.setItem(environment.empRoleTypeKey, JSON.stringify(res.data.employeeType));
             this.toastreService.success("Logged In success");
-            this.authService.OnLoginChange.emit(true);
-            this.isShowSbnt = false;
-            this.router.navigate(['/home']);
+            this.authService.onLoginChange.emit(true);
+            this.isSubmitting = false;
+            this.router.navigate(['/portal']);
           }
         },
         error: (err) => {
-          this.isShowSbnt = false;
+          this.isSubmitting = false;
         }
       })
     }

@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  public isShowSBtn: boolean = false;
+  public isSubmitting: boolean = false;
   public userForm !: FormGroup<registerModel>;
 
   constructor(private authService: AuthService, private toastreService: ToastrService, private router: Router) {
@@ -33,7 +33,7 @@ export class RegisterComponent {
   public submit() {
     if (this.userForm.valid) {
 
-      this.isShowSBtn = true;
+      this.isSubmitting = true;
       const signupUser: registerFormData = {
         name: this.userForm.controls.name.value,
         email: this.userForm.controls.email.value,
@@ -50,12 +50,12 @@ export class RegisterComponent {
         next: (res: response) => {        
           if(res.statusCode == 201){
             this.toastreService.success("SignedUp success");
-            this.isShowSBtn = false;
+            this.isSubmitting = false;
             this.router.navigate(['/login']);
           }
         },
         error: (err) => {    
-          this.isShowSBtn = false;      
+          this.isSubmitting = false;      
           this.toastreService.error(err.message);
         }  
       })

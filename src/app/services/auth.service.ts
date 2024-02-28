@@ -14,7 +14,7 @@ export class AuthService {
   
   private baseUrl = environment.baseUrl;
 
-  public OnLoginChange:EventEmitter<boolean>=new EventEmitter<boolean>();
+  public onLoginChange:EventEmitter<boolean>=new EventEmitter<boolean>();
 
   constructor(private httpClient: HttpClient) { }
   

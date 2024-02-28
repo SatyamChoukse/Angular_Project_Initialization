@@ -1,0 +1,27 @@
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 56px);
+  background: linear-gradient( #0694c6,#baffff );
+  
+  .loginbox{
+      padding: 20px;
+      background-color: #fff;
+      width: 600px;
+      min-height: 375px;
+      border-radius: 10px;
+
+      .user {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+  
+          a, h1 {
+              margin: 0 10px;
+          }
+      }
+  }
+  
+}
