@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { errorHandlingInterceptor } from './interceptors/error-handling.interceptor';
+import { FooterComponent } from './public/footer/footer.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     RegisterComponent,
     HeaderComponent,
     LoaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
